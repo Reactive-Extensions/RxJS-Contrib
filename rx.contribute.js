@@ -65,12 +65,12 @@
     observableProto.appendAs = function (propertyName, data) {
         return this.select(function (x) {
             if (x !== null && typeof (x) == 'object') {
-                x[propertyName] = isFunction(data) ? data() : data;
+                x[propertyName] = isFunction(data) ? data(x) : data;
                 return x;
             }
             else {
                 var temp = {};
-                temp[propertyName] = isFunction(data) ? data() : data;
+                temp[propertyName] = isFunction(data) ? data(x) : data;
                 return temp;
             }
         });
